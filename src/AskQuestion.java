@@ -37,14 +37,12 @@ public class AskQuestion extends Thread implements Task{
 			try {
 				latch1.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			manager.request(this, false);
 			try {
 				latch2.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -53,14 +51,12 @@ public class AskQuestion extends Thread implements Task{
 			try {
 				latch0.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			teamLead.request(this, false);
 			try {
 				latch1.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (!answered){
@@ -68,7 +64,6 @@ public class AskQuestion extends Thread implements Task{
 				try {
 					latch2.await();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -79,14 +74,14 @@ public class AskQuestion extends Thread implements Task{
 	@Override
 	public void response(Employee e) {
 		if (e == developer){
-			System.out.println(e.getName() + " Has a question");
+			System.out.println(e.getName() + " has a question");
 			latch0.countDown();
 			latch1.countDown();
 			latch2.countDown();
 		}
 		if (e == teamLead){
 			if (developer == null){
-				System.out.println(e.getName() + " Has a question");
+				System.out.println(e.getName() + " has a question");
 				latch1.countDown();
 				latch2.countDown();
 				latch1.countDown();
@@ -94,7 +89,7 @@ public class AskQuestion extends Thread implements Task{
 			}
 			else{
 				if(Math.random() > .5){
-					System.out.println(e.getName() + " Answered " + developer.getName() + "'s question.");
+					System.out.println(e.getName() + " answered " + developer.getName() + "'s question.");
 					answered = true;
 					latch1.countDown();
 					latch2.countDown();

@@ -51,9 +51,9 @@ public class Employee extends Thread{
 	 * @return string representation */
 	public String toString() {
 		if (this.type == Positions.MANAGER) {
-			return "manager";
+			return "Manager";
 		} else {
-			return "d" + team + position;
+			return "Developer " + team + position;
 		}
 	}
 }
