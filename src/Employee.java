@@ -1,13 +1,30 @@
 import java.util.ArrayList;
 
+/**
+ * Represents an Employee either Developer or Manager
+ * @author Magikarpets (Team 3) 
+ *
+ */
 public class Employee extends Thread{
 
-	ArrayList<Task> tasks = new ArrayList<Task>();
+	private ArrayList<Task> tasks = new ArrayList<Task>();
+	private int team = 0;
+	private int position = 0;
+	private Positions type = Positions.DEVELOPER;
 	
-	public Employee(String name) {
-		this.setName(name);
+	/**Builds an Employee with a certain team and position, team 0 for manager*/
+	public Employee(int team, int position) {
+		this.team = team;
+		this.position = position;
+		if (team == 0) {
+			this.type = Positions.MANAGER;
+		} else if (position == 1) {
+			this.type = Positions.TEAMLEAD;
+		}
+		this.setName(this.toString());
 	}
 	
+	/**Accepts a request to perform a task*/
 	public void request(Task t, boolean priority){
 		if (priority) {
 			tasks.add(0,t);
@@ -17,15 +34,26 @@ public class Employee extends Thread{
 		}
 	}
 	
+	/**Runs the employee*/
 	public void run() {
 		Task todo;
 		while(true){
 			if(!tasks.isEmpty()){
 				todo = tasks.get(0);
-				tasks.remove(0);
 				todo.response(this);
+				tasks.remove(0);
 			}
 			Thread.yield();
+		}
+	}
+	
+	/**Creates a string from the employee data
+	 * @return string representation */
+	public String toString() {
+		if (this.type == Positions.MANAGER) {
+			return "manager";
+		} else {
+			return "d" + team + position;
 		}
 	}
 }

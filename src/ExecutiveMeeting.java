@@ -7,14 +7,17 @@ public class ExecutiveMeeting extends Thread implements Task{
 	
 	private Employee manager;
 	
+	/**Constructor used to create an Executive Meeting*/
 	public ExecutiveMeeting(Employee manager) {
 		this.manager = manager;
 	}
 	
+	/**Runs the executive meeting*/
 	public void run() {
 		manager.request(this,true);
 	}
 	
+	/**Captures a response from the Employees*/
 	@Override
 	public void response(Employee e) {
 		// TODO Auto-generated method stub
