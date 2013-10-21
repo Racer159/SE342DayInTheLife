@@ -74,14 +74,14 @@ public class AskQuestion extends Thread implements Task{
 	@Override
 	public void response(Employee e) {
 		if (e == developer){
-			System.out.println(e.getName() + " has a question");
+			System.out.println(Clock.stringTime() + e.getName() + " has a question");
 			latch0.countDown();
 			latch1.countDown();
 			latch2.countDown();
 		}
 		if (e == teamLead){
 			if (developer == null){
-				System.out.println(e.getName() + " has a question");
+				System.out.println(Clock.stringTime() + e.getName() + " has a question");
 				latch1.countDown();
 				latch2.countDown();
 				latch1.countDown();
@@ -89,14 +89,14 @@ public class AskQuestion extends Thread implements Task{
 			}
 			else{
 				if(Math.random() > .5){
-					System.out.println(e.getName() + " answered " + developer.getName() + "'s question.");
+					System.out.println(Clock.stringTime() + e.getName() + " answered " + developer.getName() + "'s question.");
 					answered = true;
 					latch1.countDown();
 					latch2.countDown();
 					latch2.countDown();
 				}
 				else{
-					System.out.println(e.getName() + " has to take " + developer.getName() + "'s question to the manager");
+					System.out.println(Clock.stringTime() + e.getName() + " has to take " + developer.getName() + "'s question to the manager");
 					latch1.countDown();
 					latch2.countDown();
 				}
@@ -109,9 +109,9 @@ public class AskQuestion extends Thread implements Task{
 				e1.printStackTrace();
 			}
 			if (developer != null){
-				System.out.println(e.getName() + " answered " + developer.getName() + "'s question.");
+				System.out.println(Clock.stringTime() + e.getName() + " answered " + developer.getName() + "'s question.");
 			} else {
-				System.out.println(e.getName() + " answered " + teamLead.getName() + "'s question.");
+				System.out.println(Clock.stringTime() + e.getName() + " answered " + teamLead.getName() + "'s question.");
 			}
 			latch2.countDown();
 		}

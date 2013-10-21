@@ -27,14 +27,14 @@ public class StandUpMeeting extends Thread implements Task{
 	/**Captures responses from employees*/
 	@Override
 	public void response(Employee e) {
-		System.out.println(e.getName() + " has arrived at " + this.getName());
+		System.out.println(Clock.stringTime() + e.getName() + " has arrived at " + this.getName());
 		go.countDown();
 		try {
 			go.await();
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(e.getName() + " has left " + this.getName());
+		System.out.println(Clock.stringTime() + e.getName() + " has left " + this.getName());
 	}
 
 }

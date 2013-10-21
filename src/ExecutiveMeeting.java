@@ -20,13 +20,13 @@ public class ExecutiveMeeting extends Thread implements Task{
 	/**Captures a response from an Employee (manager)*/
 	@Override
 	public void response(Employee e) {
-		System.out.println(e + " executive meeting begins");
+		System.out.println(Clock.stringTime() + e + " executive meeting begins");
 		try {
 			Thread.sleep(60*10);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(e + " executive meeting ends");
+		System.out.println(Clock.stringTime() + e + " executive meeting ends");
 	}
 	
 }

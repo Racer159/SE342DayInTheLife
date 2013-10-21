@@ -11,18 +11,16 @@ public class Main {
 	 * @throws InterruptedException */
 	public static void main (String[] args) throws InterruptedException {
 		//TODO: IMPLEMENT SCHEDULING
-		Clock time = new Clock();
 		Employee manager = new Employee(0,0);
 		Employee TeamLead11 = new Employee(1,1);
 		Employee Developer12 = new Employee(1,2);
 		Employee Developer13 = new Employee(1,3);
-		time.startClock();
+		Clock.startClock();
 		manager.start();
 		TeamLead11.start();
 		Developer12.start();
 		Developer13.start();
 		ArrayList<Employee> meeting1 = new ArrayList<Employee>();
-		System.out.println(time.stringTime());
 		meeting1.add(manager);
 		meeting1.add(TeamLead11);
 		meeting1.add(Developer12);
@@ -39,8 +37,6 @@ public class Main {
 		ques.start();
 		ques2.start();
 		ques3.start();
-		Thread.currentThread().sleep(1000);
-		System.out.println(time.stringTime());
 	}
 	
 }
