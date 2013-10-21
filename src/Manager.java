@@ -1,6 +1,6 @@
 /**
  * Represents a Project Manager in the Simulation
- * @author Wayne E Starr (wes7817@rit.edu)
+ * @author Magikarpets (Team 3) 
  *
  */
 public class Manager extends Thread {

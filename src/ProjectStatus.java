@@ -1,6 +1,6 @@
 /**
  * Manages the Project Status Meeting via a latch
- * @author Wayne E Starr (wes7817@rit.edu)
+ * @author Magikarpets (Team 3) 
  *
  */
 public class ProjectStatus {

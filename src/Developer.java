@@ -1,6 +1,6 @@
 /**
  * Represents a Developer in the Simulation with Semaphore for asking questions.
- * @author Wayne E Starr (wes7817@rit.edu)
+ * @author Magikarpets (Team 3) 
  *
  */
 public class Developer extends Thread {
