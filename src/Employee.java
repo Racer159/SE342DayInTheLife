@@ -35,15 +35,15 @@ public class Employee extends Thread{
 	}
 	
 	/**Runs the employee*/
+	@SuppressWarnings("static-access")
 	public void run() {
 		Task todo;
 		while(true){
 			if(!tasks.isEmpty()){
-				todo = tasks.get(0);
+				todo = tasks.remove(0);
 				todo.response(this);
-				tasks.remove(0);
 			}
-			Thread.yield();
+			this.yield();
 		}
 	}
 	

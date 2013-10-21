@@ -27,16 +27,17 @@ public class Main {
 		meeting1.add(Developer13);
 		ExecutiveMeeting exec1 = new ExecutiveMeeting(manager);
 		ExecutiveMeeting exec2 = new ExecutiveMeeting(manager);
-		StandUpMeeting execMeeting = new StandUpMeeting("standup meeting", meeting1);
-		AskQuestion ques = new AskQuestion(manager,Developer12,Developer13);
-		AskQuestion ques2 = new AskQuestion(manager,Developer12,Developer13);
-		AskQuestion ques3 = new AskQuestion(manager,Developer12,Developer13);
+		StandUpMeeting stand1 = new StandUpMeeting("standup meeting", meeting1);
+		AskQuestion ques = new AskQuestion(manager,TeamLead11,Developer13);
+		AskQuestion ques2 = new AskQuestion(manager,TeamLead11,Developer12);
+		AskQuestion ques3 = new AskQuestion(manager,TeamLead11);
+		stand1.start();
 		exec1.start();
 		exec2.start();
-		execMeeting.start();
+		
 		ques.start();
-		ques2.start();
-		ques3.start();
+		//ques2.start();
+		//ques3.start();
 	}
 	
 }

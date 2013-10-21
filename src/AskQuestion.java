@@ -45,8 +45,7 @@ public class AskQuestion extends Thread implements Task{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
-		else{
+		} else {
 			developer.request(this, false);
 			try {
 				latch0.await();
@@ -79,25 +78,23 @@ public class AskQuestion extends Thread implements Task{
 			latch1.countDown();
 			latch2.countDown();
 		}
-		if (e == teamLead){
+		else if (e == teamLead){
 			if (developer == null){
 				System.out.println(Clock.stringTime() + e.getName() + " has a question");
 				latch1.countDown();
 				latch2.countDown();
-				latch1.countDown();
-				latch2.countDown();
-			}
-			else{
+				//latch1.countDown();
+				//latch2.countDown();
+			} else {
 				if(Math.random() > .5){
 					System.out.println(Clock.stringTime() + e.getName() + " answered " + developer.getName() + "'s question.");
 					answered = true;
-					latch1.countDown();
+					//latch1.countDown();
+					//latch2.countDown();
 					latch2.countDown();
-					latch2.countDown();
-				}
-				else{
+				} else {
 					System.out.println(Clock.stringTime() + e.getName() + " has to take " + developer.getName() + "'s question to the manager");
-					latch1.countDown();
+					//latch1.countDown();
 					latch2.countDown();
 				}
 			}
@@ -121,5 +118,4 @@ public class AskQuestion extends Thread implements Task{
 			e1.printStackTrace();
 		}
 	}
-	
 }

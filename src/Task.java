@@ -6,5 +6,4 @@
 public interface Task{
 	/**Captures the response from an employee*/
 	public void response(Employee e);
-	
 }
