@@ -9,12 +9,13 @@ import java.util.concurrent.CountDownLatch;
 public class StandUpMeeting extends Thread implements Task{
 	
 	private ArrayList<Employee> members;
-	private CountDownLatch go = new CountDownLatch(4);
+	private CountDownLatch go;
 	
 	/**Constructor used to build a Stand Up Meeting*/
 	public StandUpMeeting(String name, ArrayList<Employee> members){
 		this.members = members;
 		this.setName(name);
+		this.go = new CountDownLatch(members.size());
 	}
 	
 	/**Runs the meeting*/
