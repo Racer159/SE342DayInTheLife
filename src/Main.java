@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 
 
@@ -6,35 +7,38 @@ public class Main {
 	
 	public static void main (String[] args) {
 		// initialize the timer
+		
 		Timer timer = new Timer();
-
+		
 		//initialize all of the actors and teams
 		
-		Employee manager = new Employee(0,0);
+		Random rando = new Random();
+		
+		Employee manager = new Employee(0,0,0);
 		manager.start();
-		Employee teamLead1 = new Employee(1,1);
+		Employee teamLead1 = new Employee(1,1,rando.nextInt(30));
 		teamLead1.start();
-		Employee teamLead2 = new Employee(2,1);
+		Employee teamLead2 = new Employee(2,1,rando.nextInt(30));
 		teamLead2.start();
-		Employee teamLead3 = new Employee(3,1);
+		Employee teamLead3 = new Employee(3,1,rando.nextInt(30));
 		teamLead3.start();
-		Employee dev12 = new Employee(1,2);
+		Employee dev12 = new Employee(1,2,rando.nextInt(30));
 		dev12.start();
-		Employee dev13 = new Employee(1,3);
+		Employee dev13 = new Employee(1,3,rando.nextInt(30));
 		dev13.start();
-		Employee dev14 = new Employee(1,4);
+		Employee dev14 = new Employee(1,4,rando.nextInt(30));
 		dev14.start();
-		Employee dev22 = new Employee(2,2);
+		Employee dev22 = new Employee(2,2,rando.nextInt(30));
 		dev22.start();
-		Employee dev23 = new Employee(2,3);
+		Employee dev23 = new Employee(2,3,rando.nextInt(30));
 		dev23.start();
-		Employee dev24 = new Employee(2,4);
+		Employee dev24 = new Employee(2,4,rando.nextInt(30));
 		dev24.start();
-		Employee dev32 = new Employee(3,2);
+		Employee dev32 = new Employee(3,2,rando.nextInt(30));
 		dev32.start();
-		Employee dev33 = new Employee(3,3);
+		Employee dev33 = new Employee(3,3,rando.nextInt(30));
 		dev33.start();
-		Employee dev34 = new Employee(3,4);
+		Employee dev34 = new Employee(3,4,rando.nextInt(30));
 		dev34.start();
 		ArrayList<Employee> bosses = new ArrayList<Employee>();
 		ArrayList<Employee> team1 = new ArrayList<Employee>();
@@ -98,16 +102,48 @@ public class Main {
 		Lunch mlunch = new Lunch(60,manager);
 		timer.schedule(mlunch, 240*10);
 		//schedule everyone elses lunches
-		scheduleLunches(all,timer);
+		scheduleLunchesAndLeavesAndArrivals(all,timer);
+		scheduleQuestions(manager, team1,timer);
+		scheduleQuestions(manager, team2,timer);
+		scheduleQuestions(manager, team3,timer);
+		Leave mleave = new Leave(manager);
+		timer.schedule(mleave, 540*10);
 	}
 	
-	private static void scheduleLunches(ArrayList<Employee> all, Timer timer) {
+	private static void scheduleLunchesAndLeavesAndArrivals(ArrayList<Employee> all, Timer timer) {
 		Lunch elunch;
+		Leave eleave;
+		Random rando = new Random();
+		int lunchDuration;
+		int arrivalTime;
 		// assuming the manager is index 1
 		for (int i = 1; i < all.size(); i++){
-			elunch = new Lunch((int) (30*Math.random())+30,all.get(i));
+			lunchDuration = (int) (rando.nextInt(30))+30;
+			elunch = new Lunch(lunchDuration,all.get(i));
 			// this math means that employees will take lunch for between half and a full hour, and take it between 11:30 to 12:30
-			timer.schedule(elunch, (long) (240 + (60*Math.random()) -30)*10);
+			timer.schedule(elunch, (long) (240 + (rando.nextInt(60)) -30)*10);
+			arrivalTime = all.get(i).getArrivalTime();
+			eleave = new Leave(all.get(i));
+			timer.schedule(eleave,10*(480+arrivalTime+lunchDuration));
+		}
+	}
+	
+	private static void scheduleQuestions (Employee manager, ArrayList<Employee> team, Timer timer) {
+		AskQuestion q;
+		Random rando = new Random();
+		int rand;
+		int time;
+		for (int i = 0; i < 10; i++){
+			rand = (int) rando.nextInt(4);
+			time = (int) rando.nextInt(4800);
+			if (rand == 0){
+				q = new AskQuestion(manager,team.get(0));
+				timer.schedule(q, time);
+			}
+			else{
+				q = new AskQuestion(manager,team.get(0),team.get(rand));
+				timer.schedule(q, time);
+			}
 		}
 	}
 	
