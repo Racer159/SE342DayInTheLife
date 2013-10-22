@@ -28,7 +28,7 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 	 * requesting members to attend.
 	 */
 	public void run() {
-		TeamRoom.acquire(this);
+		TeamRoom.acquire();
 		for(int i = 0; i < members.size(); i++){
 			members.get(i).request(this,true);
 		}
@@ -38,6 +38,12 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 			e.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + name + " has begun.");
+		try {
+			Thread.sleep(60*10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		TeamRoom.release();
 	}
 
 	/**
@@ -58,6 +64,5 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);
-		TeamRoom.release(this);
 	}
 }

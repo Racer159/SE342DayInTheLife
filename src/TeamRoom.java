@@ -13,9 +13,8 @@ public class TeamRoom {
 	
 	/**
 	 * Acquires the team room for use
-	 * @param t
 	 */
-	public static void acquire(TimerTask t) {
+	public static void acquire() {
 		try {
 			lock.acquire();
 		} catch (InterruptedException e) {
@@ -25,9 +24,8 @@ public class TeamRoom {
 	
 	/**
 	 * Releases the team room when complete
-	 * @param t
 	 */
-	public static void release(TimerTask t) {
+	public static void release() {
 		lock.release();
 	}
 }
