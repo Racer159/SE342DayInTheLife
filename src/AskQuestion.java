@@ -1,11 +1,7 @@
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
-/**
- * Represents when a developer asks a question
- * @author Magikarpets (Team 3) 
- *
- */
+
 public class AskQuestion extends TimerTask implements Task{
 	
 	Employee manager;
@@ -18,20 +14,17 @@ public class AskQuestion extends TimerTask implements Task{
 	CountDownLatch latch1 = new CountDownLatch(2);
 	CountDownLatch latch2 = new CountDownLatch(3);
 	
-	/**Constructs a question with a manager, teamLead, and developer*/
 	public AskQuestion (Employee manager, Employee teamLead, Employee developer) {
 		this.manager = manager;
 		this.teamLead = teamLead;
 		this.developer = developer;
 	}
 	
-	/**Constructs a question with a manager and teamLead*/
 	public AskQuestion(Employee manager, Employee teamLead) {
 		this.manager = manager;
 		this.teamLead = teamLead;
 	}
 	
-	/**Runs the question*/
 	public void run() {
 		if (developer == null){
 			teamLead.request(this, false);
@@ -76,19 +69,18 @@ public class AskQuestion extends TimerTask implements Task{
 		}
 	}
 	
-	/**Captures the response from an employee when the question is asked*/
 	@Override
 	public void response(Employee e) {
 		// TODO Auto-generated method stub
 		if (e == developer){
-			System.out.println(Clock.stringTime() + e.getName() + " has a question");
+			System.out.println(Clock.stringTime() + e.getName() + " Has a question");
 			latch0.countDown();
 			latch1.countDown();
 			latch2.countDown();
 		}
 		if (e == teamLead){
 			if (developer == null){
-				System.out.println(Clock.stringTime() + e.getName() + " has a question");
+				System.out.println(Clock.stringTime() + e.getName() + " Has a question");
 				latch1.countDown();
 				latch2.countDown();
 				latch1.countDown();
@@ -96,7 +88,7 @@ public class AskQuestion extends TimerTask implements Task{
 			}
 			else{
 				if(Math.random() > .5){
-					System.out.println(Clock.stringTime() + e.getName() + " answered " + developer.getName() + "'s question.");
+					System.out.println(Clock.stringTime() + e.getName() + " Answered " + developer.getName() + "'s question.");
 					answered = true;
 					latch1.countDown();
 					latch2.countDown();

@@ -11,10 +11,11 @@ public class Employee extends Thread{
 	private ArrayList<Task> done = new ArrayList<Task>();
 	private int team = 0;
 	private int position = 0;
+	private int arrivalTime;
 	private Positions type = Positions.DEVELOPER;
 	
 	/**Builds an Employee with a certain team and position, team 0 for manager*/
-	public Employee(int team, int position) {
+	public Employee(int team, int position, int arrivalTime) {
 		this.team = team;
 		this.position = position;
 		if (team == 0) {
@@ -23,6 +24,7 @@ public class Employee extends Thread{
 			this.type = Positions.TEAMLEAD;
 		}
 		this.setName(this.toString());
+		this.arrivalTime = arrivalTime;
 	}
 	
 	/**Accepts a request to perform a task*/
@@ -49,6 +51,10 @@ public class Employee extends Thread{
 			}
 			this.yield();
 		}
+	}
+	
+	public int getArrivalTime(){
+		return arrivalTime;
 	}
 	
 	/**Creates a string from the employee data
