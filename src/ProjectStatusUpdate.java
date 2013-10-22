@@ -39,7 +39,7 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 		}
 		System.out.println(Clock.stringTime() + name + " has begun.");
 		try {
-			Thread.sleep(60*10);
+			Thread.sleep(15*10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +59,7 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		try {
-			Thread.sleep(60*10);
+			Thread.sleep(15*10);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}

@@ -119,6 +119,8 @@ public class Main {
 		scheduleQuestions(manager, team3,timer);
 		Leave mleave = new Leave(manager);
 		timer.schedule(mleave, 540*10);
+		ProjectStatusUpdate psu = new ProjectStatusUpdate("Project status update",all);
+		timer.schedule(psu, 4800);
 	}
 	
 	/**
