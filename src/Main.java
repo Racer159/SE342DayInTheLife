@@ -2,9 +2,17 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 
-
+/**
+ * The main driver for our progam, used to schedule tasks
+ * @author Magikarpets (Team 3)
+ *
+ */
 public class Main {
 	
+	/**
+	 * Drives the Employees and tasks
+	 * @param args
+	 */
 	public static void main (String[] args) {
 		
 		// initialize the timer
@@ -113,6 +121,11 @@ public class Main {
 		timer.schedule(mleave, 540*10);
 	}
 	
+	/**
+	 * Schedules arrival times, lunches, and leaving times
+	 * @param all
+	 * @param timer
+	 */
 	private static void scheduleLunchesAndLeavesAndArrivals(ArrayList<Employee> all, Timer timer) {
 		Lunch elunch;
 		Leave eleave;
@@ -131,6 +144,12 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Schedules questions from developers and team leads
+	 * @param manager
+	 * @param team
+	 * @param timer
+	 */
 	private static void scheduleQuestions (Employee manager, ArrayList<Employee> team, Timer timer) {
 		AskQuestion q;
 		Random rando = new Random();

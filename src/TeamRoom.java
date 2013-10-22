@@ -11,6 +11,10 @@ public class TeamRoom {
 	private static Semaphore lock = new Semaphore(1);
 	private static TimerTask holder = null;
 	
+	/**
+	 * Acquires the team room for use
+	 * @param t
+	 */
 	public static void acquire(TimerTask t) {
 		try {
 			lock.acquire();
@@ -19,6 +23,10 @@ public class TeamRoom {
 		}
 	}
 	
+	/**
+	 * Releases the team room when complete
+	 * @param t
+	 */
 	public static void release(TimerTask t) {
 		lock.release();
 	}

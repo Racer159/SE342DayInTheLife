@@ -2,18 +2,31 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
-
+/**
+ * This represents a Project Status Meeting
+ * @author Magikarpets (Team 3) 
+ *
+ */
 public class ProjectStatusUpdate extends TimerTask implements Task{
 
 	private ArrayList<Employee> members;
 	private CountDownLatch go = new CountDownLatch(13);
 	private String name;
 	
+	/**
+	 * Creates a project status meeting with given name and members
+	 * @param name
+	 * @param members
+	 */
 	public ProjectStatusUpdate(String name, ArrayList<Employee> members){
 		this.members = members;
 		this.name = name;
 	}
 	
+	/**
+	 * Runs the project status meeting, first trying to get the room, then
+	 * requesting members to attend.
+	 */
 	public void run() {
 		TeamRoom.acquire(this);
 		for(int i = 0; i < members.size(); i++){
@@ -22,27 +35,26 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 		try {
 			go.await();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + name + " has begun.");
 	}
 
+	/**
+	 * Captures an employees response when they decide to perform the task
+	 */
 	@Override
 	public void response(Employee e) {
-		// TODO Auto-generated method stub
 		System.out.println(Clock.stringTime() + e.getName() + " has arrived at " + name);
 		go.countDown();
 		try {
 			go.await();
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			Thread.sleep(60*10);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);

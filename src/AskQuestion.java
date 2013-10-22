@@ -1,7 +1,11 @@
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
-
+/**
+ * Allows a developer or team lead to ask a question
+ * @author Magikarpets (Team 3) 
+ *
+ */
 public class AskQuestion extends TimerTask implements Task{
 	
 	Employee manager;
@@ -14,31 +18,43 @@ public class AskQuestion extends TimerTask implements Task{
 	CountDownLatch latch1 = new CountDownLatch(2);
 	CountDownLatch latch2 = new CountDownLatch(3);
 	
+	/**
+	 * Creates a question from a developer
+	 * @param manager
+	 * @param teamLead
+	 * @param developer
+	 */
 	public AskQuestion (Employee manager, Employee teamLead, Employee developer) {
 		this.manager = manager;
 		this.teamLead = teamLead;
 		this.developer = developer;
 	}
 	
+	/**
+	 * Creates a question from a team leader
+	 * @param manager
+	 * @param teamLead
+	 */
 	public AskQuestion(Employee manager, Employee teamLead) {
 		this.manager = manager;
 		this.teamLead = teamLead;
 	}
 	
+	/**
+	 * Runs the asking of the question
+	 */
 	public void run() {
 		if (developer == null){
 			teamLead.request(this, false);
 			try {
 				latch1.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			manager.request(this, false);
 			try {
 				latch2.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -47,14 +63,12 @@ public class AskQuestion extends TimerTask implements Task{
 			try {
 				latch0.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			teamLead.request(this, false);
 			try {
 				latch1.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (!answered){
@@ -64,14 +78,15 @@ public class AskQuestion extends TimerTask implements Task{
 		try {
 			latch2.await();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Captures an employees response when they decide to perform the task
+	 */
 	@Override
 	public void response(Employee e) {
-		// TODO Auto-generated method stub
 		if (e == developer){
 			System.out.println(Clock.stringTime() + e.getName() + " Has a question");
 			latch0.countDown();
@@ -105,7 +120,6 @@ public class AskQuestion extends TimerTask implements Task{
 			try {
 				Thread.sleep(10*10);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			if (developer != null){
@@ -118,7 +132,6 @@ public class AskQuestion extends TimerTask implements Task{
 		try {
 			latch2.await();
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

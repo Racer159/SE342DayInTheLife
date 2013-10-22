@@ -15,7 +15,9 @@ public class Employee extends Thread{
 	private Positions type = Positions.DEVELOPER;
 	private boolean working = true;
 	
-	/**Builds an Employee with a certain team and position, team 0 for manager*/
+	/**
+	 * Creates an Employee with a certain team and position, team 0 for manager
+	 */
 	public Employee(int team, int position, int arrivalTime) {
 		this.team = team;
 		this.position = position;
@@ -28,7 +30,9 @@ public class Employee extends Thread{
 		this.arrivalTime = arrivalTime;
 	}
 	
-	/**Accepts a request to perform a task*/
+	/**
+	 * Accepts a request to perform a task
+	 */
 	public void request(Task t, boolean priority){
 		if (priority) {
 			tasks.add(0,t);
@@ -38,7 +42,9 @@ public class Employee extends Thread{
 		}
 	}
 	
-	/**Runs the employee*/
+	/**
+	 * Runs the employee in a loop that ends after the employee leaves
+	 */
 	@SuppressWarnings("static-access")
 	public void run() {
 		Task todo;
@@ -55,12 +61,18 @@ public class Employee extends Thread{
 		return;
 	}
 	
+	/**
+	 * Returns the Arrival Time of the Employee
+	 * @return arrivalTime
+	 */
 	public int getArrivalTime(){
 		return arrivalTime;
 	}
 	
-	/**Creates a string from the employee data
-	 * @return string representation */
+	/**
+	 * Creates a string from the employee data
+	 * @return stringRep
+	 */
 	public String toString() {
 		if (this.type == Positions.MANAGER) {
 			return "Manager";
@@ -69,6 +81,9 @@ public class Employee extends Thread{
 		}
 	}
 	
+	/**
+	 * Tells the Employee that they are done for the day
+	 */
 	public void finish() {
 		this.working = false;
 	}

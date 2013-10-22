@@ -1,26 +1,38 @@
 import java.util.TimerTask;
 
-
+/**
+ * Represents an Executive Meeting
+ * @author Magikarpets (Team 3)
+ *
+ */
 public class ExecutiveMeeting extends TimerTask implements Task{
 	
 	private Employee manager;
 	
+	/**
+	 * Creates a executive meeting task
+	 * @param manager
+	 */
 	public ExecutiveMeeting(Employee manager) {
 		this.manager = manager;
 	}
 	
+	/**
+	 * Runs the executive meeting
+	 */
 	public void run() {
 		manager.request(this,true);
 	}
 	
+	/**
+	 * Captures an employees response when they decide to perform the task
+	 */
 	@Override
 	public void response(Employee e) {
-		// TODO Auto-generated method stub
 		System.out.println(Clock.stringTime()+"Manager's executive meeting begins");
 		try {
 			Thread.sleep(60*10);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime()+"Manager's executive meeting ends");
