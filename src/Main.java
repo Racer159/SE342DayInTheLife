@@ -9,6 +9,7 @@ public class Main {
 		// initialize the timer
 		
 		Timer timer = new Timer();
+		Clock.startClock();
 		
 		//initialize all of the actors and teams
 		
