@@ -3,15 +3,14 @@ import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
 
-public class StandUpMeeting extends TimerTask implements Task{
-	
+public class ProjectStatusUpdate extends TimerTask implements Task{
+
 	private ArrayList<Employee> members;
-	private CountDownLatch go;
+	private CountDownLatch go = new CountDownLatch(13);
 	private String name;
 	
-	public StandUpMeeting(String name, ArrayList<Employee> members){
+	public ProjectStatusUpdate(String name, ArrayList<Employee> members){
 		this.members = members;
-		this.go = new CountDownLatch(members.size());
 		this.name = name;
 	}
 	
@@ -40,12 +39,11 @@ public class StandUpMeeting extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		try {
-			Thread.sleep(15*10);
+			Thread.sleep(60*10);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		System.out.println(e.getName() + " has left " + name);
 	}
-
 }

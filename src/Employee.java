@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Employee extends Thread{
 
 	private ArrayList<Task> tasks = new ArrayList<Task>();
+	private ArrayList<Task> done = new ArrayList<Task>();
 	private int team = 0;
 	private int position = 0;
 	private Positions type = Positions.DEVELOPER;
@@ -41,7 +42,10 @@ public class Employee extends Thread{
 		while(true){
 			if(!tasks.isEmpty()){
 				todo = tasks.remove(0);
-				todo.response(this);
+				if (todo != null){
+					done.add(todo);
+					todo.response(this);
+				}
 			}
 			this.yield();
 		}
