@@ -1,43 +1,26 @@
 import java.util.ArrayList;
+import java.util.Timer;
 
-/**
- * The Main Class that drives the application
- * @author Magikarpets (Team 3) 
- *
- */
+
 public class Main {
 
-	/**The main class for the project
-	 * @throws InterruptedException */
-	public static void main (String[] args) throws InterruptedException {
-		//TODO: IMPLEMENT SCHEDULING
-		Employee manager = new Employee(0,0);
-		Employee TeamLead11 = new Employee(1,1);
-		Employee Developer12 = new Employee(1,2);
-		Employee Developer13 = new Employee(1,3);
-		Clock.startClock();
-		manager.start();
-		TeamLead11.start();
-		Developer12.start();
-		Developer13.start();
-		ArrayList<Employee> meeting1 = new ArrayList<Employee>();
-		meeting1.add(manager);
-		meeting1.add(TeamLead11);
-		meeting1.add(Developer12);
-		meeting1.add(Developer13);
-		ExecutiveMeeting exec1 = new ExecutiveMeeting(manager);
-		ExecutiveMeeting exec2 = new ExecutiveMeeting(manager);
-		StandUpMeeting stand1 = new StandUpMeeting("standup meeting", meeting1);
-		AskQuestion ques = new AskQuestion(manager,TeamLead11,Developer13);
-		AskQuestion ques2 = new AskQuestion(manager,TeamLead11,Developer12);
-		AskQuestion ques3 = new AskQuestion(manager,TeamLead11);
-		stand1.start();
-		exec1.start();
-		exec2.start();
-		
-		ques.start();
-		//ques2.start();
-		//ques3.start();
+	Employee manager = new Employee(0,0);
+	Employee teamLead1 = new Employee(1,1);
+	Employee teamLead2 = new Employee(2,1);
+	Employee teamLead3 = new Employee(3,1);
+	Employee dev12 = new Employee(1,2);
+	Employee dev13 = new Employee(1,3);
+	Employee dev14 = new Employee(1,4);
+	Employee dev22 = new Employee(2,2);
+	Employee dev23 = new Employee(2,3);
+	Employee dev24 = new Employee(2,4);
+	Employee dev32 = new Employee(3,2);
+	Employee dev33 = new Employee(3,3);
+	Employee dev34 = new Employee(3,4);
+	ArrayList<Employee> bosses = new ArrayList<Employee>();
+	
+	public static void main (String[] args) {
+				
 	}
 	
 }
