@@ -6,9 +6,10 @@ import java.util.Timer;
 public class Main {
 	
 	public static void main (String[] args) {
-		// initialize the timer
 		
+		// initialize the timer
 		Timer timer = new Timer();
+		
 		//start the clock
 		Clock.startClock();
 		

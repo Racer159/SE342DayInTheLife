@@ -15,6 +15,7 @@ public class StandUpMeeting extends TimerTask implements Task{
 	}
 	
 	public void run() {
+		TeamRoom.acquire(this);
 		for(int i = 0; i < members.size(); i++){
 			members.get(i).request(this,true);
 		}
@@ -29,22 +30,20 @@ public class StandUpMeeting extends TimerTask implements Task{
 
 	@Override
 	public void response(Employee e) {
-		// TODO Auto-generated method stub
 		System.out.println(Clock.stringTime() + e.getName() + " has arrived at " + name);
 		go.countDown();
 		try {
 			go.await();
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			Thread.sleep(15*10);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);
+		TeamRoom.release(this);
 	}
 
 }

@@ -13,6 +13,7 @@ public class Employee extends Thread{
 	private int position = 0;
 	private int arrivalTime;
 	private Positions type = Positions.DEVELOPER;
+	private boolean working = true;
 	
 	/**Builds an Employee with a certain team and position, team 0 for manager*/
 	public Employee(int team, int position, int arrivalTime) {
@@ -41,7 +42,7 @@ public class Employee extends Thread{
 	@SuppressWarnings("static-access")
 	public void run() {
 		Task todo;
-		while(true){
+		while(working){
 			if(!tasks.isEmpty()){
 				todo = tasks.remove(0);
 				if (todo != null){
@@ -51,6 +52,7 @@ public class Employee extends Thread{
 			}
 			this.yield();
 		}
+		return;
 	}
 	
 	public int getArrivalTime(){
@@ -65,5 +67,9 @@ public class Employee extends Thread{
 		} else {
 			return "Developer " + team + position;
 		}
+	}
+	
+	public void finish() {
+		this.working = false;
 	}
 }

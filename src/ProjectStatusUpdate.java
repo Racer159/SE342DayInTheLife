@@ -15,6 +15,7 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 	}
 	
 	public void run() {
+		TeamRoom.acquire(this);
 		for(int i = 0; i < members.size(); i++){
 			members.get(i).request(this,true);
 		}
@@ -45,5 +46,6 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);
+		TeamRoom.release(this);
 	}
 }

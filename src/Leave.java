@@ -11,7 +11,7 @@ public class Leave extends TimerTask implements Task{
 	@Override
 	public void response(Employee e) {
 		System.out.println(Clock.stringTime() + e.getName() + " has left for the day.");
-		e.stop();
+		e.finish();
 	}
 
 	@Override
