@@ -7,7 +7,10 @@ public class Main {
 	public static void main (String[] args) {
 		// initialize the timer
 		Timer timer = new Timer();
-
+		
+		//start the clock
+		Clock.startClock();
+		
 		//initialize all of the actors and teams
 		
 		Employee manager = new Employee(0,0);

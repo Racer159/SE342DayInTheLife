@@ -10,6 +10,7 @@ public class Clock {
 	/**Starts the clock*/
 	public static void startClock() {
 		start = System.currentTimeMillis();
+		start -= 8*600;
 	}
 	
 	/**Gets the time in milliseconds since start*/
