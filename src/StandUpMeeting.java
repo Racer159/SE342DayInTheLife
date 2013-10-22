@@ -22,6 +22,7 @@ public class StandUpMeeting extends TimerTask implements Task{
 	
 	/**Runs the stand up meeting*/
 	public void run() {
+		TeamRoom.acquire(this);
 		for(int i = 0; i < members.size(); i++){
 			members.get(i).request(this,true);
 		}
@@ -49,6 +50,7 @@ public class StandUpMeeting extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);
+		TeamRoom.release(this);
 	}
 
 }

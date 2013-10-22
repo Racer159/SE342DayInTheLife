@@ -22,6 +22,7 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 	
 	/**Runs the project status meeting*/
 	public void run() {
+		TeamRoom.acquire(this);
 		for(int i = 0; i < members.size(); i++){
 			members.get(i).request(this,true);
 		}
@@ -37,7 +38,6 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 	/**Captures the response from an employee going to the meeting*/
 	@Override
 	public void response(Employee e) {
-		// TODO Auto-generated method stub
 		System.out.println(Clock.stringTime() + e.getName() + " has arrived at " + name);
 		go.countDown();
 		try {
@@ -53,5 +53,6 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 			e1.printStackTrace();
 		}
 		System.out.println(Clock.stringTime() + e.getName() + " has left " + name);
+		TeamRoom.release(this);
 	}
 }
