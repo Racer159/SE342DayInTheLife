@@ -24,6 +24,9 @@ public class Leave extends TimerTask implements Task{
 	public void response(Employee e) {
 		System.out.println(Clock.stringTime() + e.getName() + " has left for the day.");
 		e.finish();
+		if (e.getName().equals("Manager")){
+			System.exit(0);
+		}
 	}
 
 	/**
