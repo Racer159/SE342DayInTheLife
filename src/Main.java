@@ -136,11 +136,11 @@ public class Main {
 		int arrivalTime;
 		// assuming the manager is index 1
 		for (int i = 1; i < all.size(); i++){
-			lunchDuration = (int) (rando.nextInt(30))+30;
+			arrivalTime = all.get(i).getArrivalTime();
+			lunchDuration = (int) (rando.nextInt(30))+30-arrivalTime;
 			elunch = new Lunch(lunchDuration,all.get(i));
 			// this math means that employees will take lunch for between half and a full hour, and take it between 11:30 to 12:30
 			timer.schedule(elunch, (long) (240 + (rando.nextInt(60)) -30)*10);
-			arrivalTime = all.get(i).getArrivalTime();
 			eleave = new Leave(all.get(i));
 			timer.schedule(eleave,10*(480+arrivalTime+lunchDuration));
 		}
