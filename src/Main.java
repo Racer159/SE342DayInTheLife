@@ -9,6 +9,8 @@ import java.util.Timer;
  */
 public class Main {
 	
+	private static ArrayList<Employee> all;
+	
 	/**
 	 * Drives the Employees and tasks
 	 * @param args
@@ -55,7 +57,7 @@ public class Main {
 		ArrayList<Employee> team1 = new ArrayList<Employee>();
 		ArrayList<Employee> team2 = new ArrayList<Employee>();
 		ArrayList<Employee> team3 = new ArrayList<Employee>();
-		ArrayList<Employee> all = new ArrayList<Employee>();
+		all = new ArrayList<Employee>();
 		
 		//put each employee in their respective teams
 
@@ -169,6 +171,14 @@ public class Main {
 				timer.schedule(q, time);
 			}
 		}
+	}
+	
+	public static void printStatistics(){
+		CumulativeEmployeeStats ces = new CumulativeEmployeeStats();
+		for(Employee e : all){
+			ces.add(e.getEmployeeStats());
+		}
+		System.out.println(ces);
 	}
 	
 }

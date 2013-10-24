@@ -32,6 +32,10 @@ public class Employee extends Thread{
 		this.stats = new EmployeeStats(arrivalTime);
 	}
 	
+	public EmployeeStats getEmployeeStats(){
+		return stats;
+	}
+	
 	/**
 	 * Accepts a request to perform a task
 	 */
@@ -61,10 +65,11 @@ public class Employee extends Thread{
 			if(!tasks.isEmpty()){
 				todo = tasks.remove(0);
 				if (todo != null){
-					stats.calcStats(todo);
-					System.out.println("Developer" + team + position + " " + stats);
+					stats.calcStats(todo.getTaskType());
 					done.add(todo);
 					todo.response(this);
+					System.out.println("Developer" + team + position + " " + stats);
+					stats.calcStats(TaskType.WORK);
 				}
 			}
 			this.yield();

@@ -20,7 +20,7 @@ public class EmployeeStats {
 		this.prevTask = TaskType.NOTATWORK;
 	}
 	
-	public void calcStats( Task task ){
+	public void calcStats( TaskType task ){
 		int endTime = (int) (Clock.getTime()/10);
 		
 		if( prevTask.equals(TaskType.MEETING) ){
@@ -38,9 +38,31 @@ public class EmployeeStats {
 		}
 		
 		this.prevTime = endTime;
-		this.prevTask = task.getTaskType();	
+		this.prevTask = task;
 	}
 	
+	
+	
+	public int getWorking() {
+		return working;
+	}
+
+	public int getLunch() {
+		return lunch;
+	}
+
+	public int getMeetings() {
+		return meetings;
+	}
+
+	public int getQuestions() {
+		return questions;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
 	public String toString(){
 		return "Total Time: " + total + " minutes. \n"
 			+ "\tWorking for " + working + " minutes.\n\tLunch for " + lunch +
