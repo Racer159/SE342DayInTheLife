@@ -22,7 +22,7 @@ public class Leave extends TimerTask implements Task{
 	 * @return TaskType - task
 	 */
 	public TaskType getTaskType(){
-		return TaskType.IDLE;
+		return TaskType.NOTATWORK;
 	}
 	
 	/**

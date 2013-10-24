@@ -1,4 +1,10 @@
-
+/**
+ * Class used to add up EmployeeStats. Has total minutes, 
+ * working minutes, lunch minutes, meeting minutes, question
+ * minutes, and number of employees in the aggregation.
+ * @author Magikarpets (Team 3)
+ *
+ */
 public class CumulativeEmployeeStats {
 	
 	private int working;

@@ -29,9 +29,15 @@ public class Employee extends Thread{
 		}
 		this.setName(this.toString());
 		this.arrivalTime = arrivalTime;
-		this.stats = new EmployeeStats(arrivalTime);
+		this.stats = new EmployeeStats();
 	}
 	
+	/**
+	 * Return the current running statistics 
+	 * for the employee
+	 * 
+	 * @return EmployeeStats work statistics.
+	 */
 	public EmployeeStats getEmployeeStats(){
 		return stats;
 	}

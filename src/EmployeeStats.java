@@ -1,4 +1,9 @@
-
+/**
+ * Represents the statistics for what an employee does during 
+ * the day
+ * @author Magikarpets (Team 3) 
+ *
+ */
 public class EmployeeStats {
 	
 	private int prevTime;
@@ -10,16 +15,32 @@ public class EmployeeStats {
 	private int questions;
 	private int total;
 	
-	public EmployeeStats( int arrivalTime ){
+	/**
+	 * Set everything to 0 and set the task type to 
+	 * NOTATWORK. When calcStats is called for the 
+	 * first time it will not add anything because
+	 * non work time isn't saved.
+	 * 
+	 * @param arrivalTime
+	 */
+	public EmployeeStats(){
 		this.working = 0;
 		this.lunch = 0;
 		this.meetings = 0;
 		this.questions = 0;
 		this.total = 0;
-		this.prevTime = arrivalTime;
+		this.prevTime = 0;
 		this.prevTask = TaskType.NOTATWORK;
 	}
 	
+	/**
+	 * On switching tasks add the elapsed time on the previous
+	 * task to its corresponding total as well as the overall 
+	 * total. Don't add to anything if the previous task was 
+	 * TaskType.NOTATWORK.
+	 * 
+	 * @param TaskType task that the employee is switching too.
+	 */
 	public void calcStats( TaskType task ){
 		int endTime = (int) (Clock.getTime()/10);
 		

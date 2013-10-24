@@ -9,6 +9,9 @@ import java.util.Timer;
  */
 public class Main {
 	
+	/**
+	 * All employees.
+	 */
 	private static ArrayList<Employee> all;
 	
 	/**
@@ -173,6 +176,10 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Totals up the work statistics for all the employees and 
+	 * prints the cumulative statistics.
+	 */
 	public static void printStatistics(){
 		CumulativeEmployeeStats ces = new CumulativeEmployeeStats();
 		for(Employee e : all){
