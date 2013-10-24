@@ -30,13 +30,13 @@ public class Main {
 		
 		Random rando = new Random();
 		
-		Employee manager = new Employee(0,0,0);
+		Employee manager = new Manager(0,0,0);
 		manager.start();
-		Employee teamLead1 = new Employee(1,1,rando.nextInt(30));
+		Employee teamLead1 = new TeamLead(1,1,rando.nextInt(30));
 		teamLead1.start();
-		Employee teamLead2 = new Employee(2,1,rando.nextInt(30));
+		Employee teamLead2 = new TeamLead(2,1,rando.nextInt(30));
 		teamLead2.start();
-		Employee teamLead3 = new Employee(3,1,rando.nextInt(30));
+		Employee teamLead3 = new TeamLead(3,1,rando.nextInt(30));
 		teamLead3.start();
 		Employee dev12 = new Employee(1,2,rando.nextInt(30));
 		dev12.start();

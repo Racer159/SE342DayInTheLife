@@ -7,12 +7,13 @@ import java.util.ArrayList;
  */
 public class Employee extends Thread{
 
+	protected Positions type = Positions.DEVELOPER;
+	
 	private ArrayList<Task> tasks = new ArrayList<Task>();
 	private ArrayList<Task> done = new ArrayList<Task>();
 	private int team = 0;
 	private int position = 0;
 	private int arrivalTime;
-	private Positions type = Positions.DEVELOPER;
 	private boolean working = true;
 	private EmployeeStats stats;
 	
@@ -22,11 +23,6 @@ public class Employee extends Thread{
 	public Employee(int team, int position, int arrivalTime) {
 		this.team = team;
 		this.position = position;
-		if (team == 0) {
-			this.type = Positions.MANAGER;
-		} else if (position == 1) {
-			this.type = Positions.TEAMLEAD;
-		}
 		this.setName(this.toString());
 		this.arrivalTime = arrivalTime;
 		this.stats = new EmployeeStats();
@@ -96,11 +92,7 @@ public class Employee extends Thread{
 	 * @return stringRep
 	 */
 	public String toString() {
-		if (this.type == Positions.MANAGER) {
-			return "Manager";
-		} else {
 			return "Developer " + team + position;
-		}
 	}
 	
 	/**
