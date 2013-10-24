@@ -68,7 +68,7 @@ public class Employee extends Thread{
 					stats.calcStats(todo.getTaskType());
 					done.add(todo);
 					todo.response(this);
-					System.out.println("Developer" + team + position + " " + stats);
+					//System.out.println("Developer" + team + position + " " + stats);
 					stats.calcStats(TaskType.WORK);
 				}
 			}
