@@ -48,6 +48,13 @@ public class Employee extends Thread{
 	@SuppressWarnings("static-access")
 	public void run() {
 		Task todo;
+		try {
+			this.sleep(arrivalTime*10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(Clock.stringTime() + this.getName() + " has arrived to work.");
 		while(working){
 			if(!tasks.isEmpty()){
 				todo = tasks.remove(0);
