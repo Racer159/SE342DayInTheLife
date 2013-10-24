@@ -21,6 +21,14 @@ public class Lunch extends TimerTask implements Task{
 	}
 	
 	/**
+	 * Returns the type of the task
+	 * @return TaskType - task
+	 */
+	public TaskType getTaskType(){
+		return TaskType.LUNCH;
+	}
+	
+	/**
 	 * Runs the lunch task
 	 */
 	public void run() {

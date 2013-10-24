@@ -41,6 +41,14 @@ public class AskQuestion extends TimerTask implements Task{
 	}
 	
 	/**
+	 * Returns the type of the task
+	 * @return TaskType - task
+	 */
+	public TaskType getTaskType(){
+		return TaskType.QUESTION;
+	}
+	
+	/**
 	 * Runs the asking of the question
 	 */
 	public void run() {

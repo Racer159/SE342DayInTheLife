@@ -14,6 +14,7 @@ public class Employee extends Thread{
 	private int arrivalTime;
 	private Positions type = Positions.DEVELOPER;
 	private boolean working = true;
+	private EmployeeStats stats;
 	
 	/**
 	 * Creates an Employee with a certain team and position, team 0 for manager
@@ -28,6 +29,7 @@ public class Employee extends Thread{
 		}
 		this.setName(this.toString());
 		this.arrivalTime = arrivalTime;
+		this.stats = new EmployeeStats(arrivalTime);
 	}
 	
 	/**
@@ -52,6 +54,8 @@ public class Employee extends Thread{
 			if(!tasks.isEmpty()){
 				todo = tasks.remove(0);
 				if (todo != null){
+					stats.calcStats(todo);
+					System.out.println("Developer" + team + position + " " + stats);
 					done.add(todo);
 					todo.response(this);
 				}

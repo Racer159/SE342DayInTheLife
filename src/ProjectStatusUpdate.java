@@ -24,6 +24,14 @@ public class ProjectStatusUpdate extends TimerTask implements Task{
 	}
 	
 	/**
+	 * Returns the type of the task
+	 * @return TaskType - task
+	 */
+	public TaskType getTaskType(){
+		return TaskType.MEETING;
+	}
+	
+	/**
 	 * Runs the project status meeting, first trying to get the room, then
 	 * requesting members to attend.
 	 */

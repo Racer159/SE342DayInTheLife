@@ -18,6 +18,14 @@ public class Leave extends TimerTask implements Task{
 	}
 	
 	/**
+	 * Returns the type of the task
+	 * @return TaskType - task
+	 */
+	public TaskType getTaskType(){
+		return TaskType.IDLE;
+	}
+	
+	/**
 	 * Captures an employees response when they decide to perform the task
 	 */
 	@Override

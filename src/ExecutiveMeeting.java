@@ -18,6 +18,14 @@ public class ExecutiveMeeting extends TimerTask implements Task{
 	}
 	
 	/**
+	 * Returns the type of the task
+	 * @return TaskType - task
+	 */
+	public TaskType getTaskType(){
+		return TaskType.MEETING;
+	}
+	
+	/**
 	 * Runs the executive meeting
 	 */
 	public void run() {
